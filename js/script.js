@@ -124,7 +124,7 @@ const icons = [
 // 2. aggancio html
 const iconsContainer = document.getElementById('container-icon');
 const optionContainer = document.querySelector('.option-container');
-
+const select = document.getElementById('options');
 
 // 3. stampo tutte le cards icons con forEach
 icons.forEach((element) => {
@@ -155,13 +155,17 @@ optionContainer.innerHTML += `
 
 
 // 5. scateno evento on click -> change type on select id='options'
-document.getElementById('options').addEventListener('change', function() {
-    console.log('You selected: ', this.value); // debug in console
+
+
+select.addEventListener('change', function() {
+    
+    
+    console.log('You selected: ', select.value); // debug in console
 
     // con filter, creo array per oggetti scelti dall'utente con eventListener on click
-    const newFilterTypeList = icons.filter(function (icons){
-        const typeChoosen = icons.type;
-        return typeChoosen === 'animals' || typeChoosen === 'vegetables' || typeChoosen === 'user';
+    const newFilterTypeList = icons.filter(function (icon){
+        const typeChoosen = icon.type;
+        return typeChoosen === select.value;
     })
 
     console.log(newFilterTypeList);
