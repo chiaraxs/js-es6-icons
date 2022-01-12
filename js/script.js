@@ -122,8 +122,9 @@ const icons = [
 // Ciascuna icona ha una proprietà “color”: utilizzare questa proprietà per visualizzare le icone del colore corrispondente.
 
 // 2. aggancio html
-const iconsContainer = document.getElementById('container-icon')
-const optionContainer = document.querySelector('.option-container')
+const iconsContainer = document.getElementById('container-icon');
+const optionContainer = document.querySelector('.option-container');
+
 
 // 3. stampo tutte le cards icons con forEach
 icons.forEach((element) => {
@@ -151,56 +152,42 @@ optionContainer.innerHTML += `
 </p>`;
 
 
-// optionContainer.innerHTML += ` 
-// <p>FILTRA PER TIPO
-//     <select id="options" name="options">
-//         <option value="all">All</option>
-//         <option value="animals">${icons.type}</option>
-//         <option value="vegetables">${icons.type}</option>
-//         <option value="user">${icons.type}</option>
-//     </select>
-// </p>`;
 
 
-// 5. provo filter
+// 5. scateno evento on click -> change type on select id='options'
+document.getElementById('options').addEventListener('change', function() {
+    console.log('You selected: ', this.value); // debug in console
 
-// con filter, suddivido e creo 3 'sotto-array' di oggetti separati: animals, vegetables, user
-// in modo da poterli successivamente estrapolare type x type
-const animalsIcon = icons.filter((option) => {
-    const animalsTypeIcon = option.type;
-    return animalsTypeIcon === 'animal';
-});
-
-
-const vegetablesIcon = icons.filter((option) => {
-    const vegetablesTypeIcon = option.type;
-    return vegetablesTypeIcon === 'vegetables';
-});
-
-
-const userIcon = icons.filter((option) => {
-    const userTypeIcon = option.type;
-    return userTypeIcon === 'user';
-});
-
-
-// con filter, creo array per oggetti scelti dall'utente con eventListener on click
-
-const optionChoosen = icons.filter((type) => {
-
-    optionContainer.addEventListener('click', function(){
-        if(type === icons.type ) {
-            return true;
-        }
-        return false;
+    // con filter, creo array per oggetti scelti dall'utente con eventListener on click
+    const newFilterTypeList = icons.filter(function (icons){
+        const typeChoosen = icons.type;
+        return typeChoosen === 'animals' || typeChoosen === 'vegetables' || typeChoosen === 'user';
     })
-   
+
+    console.log(newFilterTypeList);
 });
 
-console.log(optionChoosen); // console debug
+
+
+// const list = ['Mino', 'Pino', 'Gino', 'Maura', 'Lino', 'Anna', 'Paola']; ICONS
+// const newFilterNamesList = list.filter(function (name) {
+//     const firstChar = name[0].toLowerCase();
+//     // ritorna il valore solo se...
+//     return firstChar === 'm' || firstChar === 'p';
+// })
+// console.log(newFilterNamesList)
+
+ 
 
 
 
+
+
+// 1. event listener su select -> evento change
+// 2. dentro event listener stampa valore scelto da select
+// 3. filtri tutti le icons, andando a vedere se il loro type è uguale al valore scelto tramite select
+// 4. stampo nel dom le icone prescelte filtrate
+// 5. gestire caso all
 
 
 
