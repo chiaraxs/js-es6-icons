@@ -1,0 +1,46 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+/* general style */
+body{
+    background-color: grey;
+}
+
+/* icons style */
+#container-icon{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: lightgrey;
+}
+
+.icons{
+    width: calc(100% / 5 - 20px);
+    height: 200px;
+    background-color: white;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+.fas{
+    font-size: 40px;
+    margin-top: 70px;
+}
+
+.blue{
+    color: blue;
+}
+
+.orange{
+    color: orange;
+}
+
+.green{
+    color: green;
+}
