@@ -10,6 +10,24 @@ body{
     background-color: grey;
 }
 
+h1{
+    color: cornflowerblue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 10px;
+}
+
+p{
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    padding: 20px;
+}
+
+.option-container{
+    background-color: cornflowerblue;
+    height: 80px;
+}
+
 /* icons style */
 #container-icon{
     display: flex;
@@ -24,7 +42,6 @@ body{
     text-align: center;
     font-weight: bold;
     margin: 10px;
-    border: 1px solid black;
     border-radius: 30px;
 }
 
