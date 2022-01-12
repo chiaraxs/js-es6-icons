@@ -163,14 +163,41 @@ optionContainer.innerHTML += `
 
 
 // 5. provo filter
-const optionChoosen = icons.filter((type) => {
-    if(type === icons.type ) {
-        return true;
-    }
-    return false;
+
+// con filter, suddivido e creo 3 'sotto-array' di oggetti separati: animals, vegetables, user
+// in modo da poterli successivamente estrapolare type x type
+const animalsIcon = icons.filter((option) => {
+    const animalsTypeIcon = option.type;
+    return animalsTypeIcon === 'animal';
 });
 
-console.log(optionChoosen) // console debug
+
+const vegetablesIcon = icons.filter((option) => {
+    const vegetablesTypeIcon = option.type;
+    return vegetablesTypeIcon === 'vegetables';
+});
+
+
+const userIcon = icons.filter((option) => {
+    const userTypeIcon = option.type;
+    return userTypeIcon === 'user';
+});
+
+
+// con filter, creo array per oggetti scelti dall'utente con eventListener on click
+
+const optionChoosen = icons.filter((type) => {
+
+    optionContainer.addEventListener('click', function(){
+        if(type === icons.type ) {
+            return true;
+        }
+        return false;
+    })
+   
+});
+
+console.log(optionChoosen); // console debug
 
 
 
