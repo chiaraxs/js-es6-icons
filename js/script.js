@@ -142,13 +142,39 @@ icons.forEach((element) => {
 // 4. stampo in pagina select con options
 optionContainer.innerHTML += ` 
 <p>FILTRA PER TIPO
-<select id="options" name="options">
-    <option value="all">All</option>
-    <option value="animals">Animals</option>
-    <option value="vegetables">Vegetables</option>
-    <option value="user">User</option>
-</select>
+    <select id="options" name="options">
+        <option value="all">All</option>
+        <option value="animals">Animals</option>
+        <option value="vegetables">Vegetables</option>
+        <option value="user">User</option>
+    </select>
 </p>`;
+
+
+// optionContainer.innerHTML += ` 
+// <p>FILTRA PER TIPO
+//     <select id="options" name="options">
+//         <option value="all">All</option>
+//         <option value="animals">${icons.type}</option>
+//         <option value="vegetables">${icons.type}</option>
+//         <option value="user">${icons.type}</option>
+//     </select>
+// </p>`;
+
+
+// 5. provo filter
+const optionChoosen = icons.filter((type) => {
+    if(type === icons.type ) {
+        return true;
+    }
+    return false;
+});
+
+console.log(optionChoosen) // console debug
+
+
+
+
 
 
 
