@@ -116,15 +116,10 @@ const icons = [
 ];
 
 
-// Milestone 1
-// Partendo dalla struttura dati fornita, visualizzare in pagina un box per ogni icona, in cui è presente il nome dell’icona e l’icona stessa.
-// Milestone 2
-// Ciascuna icona ha una proprietà “color”: utilizzare questa proprietà per visualizzare le icone del colore corrispondente.
-
-// 2. aggancio html
+// 2. aggancio dom per stampa
 const iconsContainer = document.getElementById('container-icon');
 const optionContainer = document.querySelector('.option-container');
-const select = document.getElementById('options');
+
 
 // 3. stampo tutte le cards icons con forEach
 icons.forEach((element) => {
@@ -140,64 +135,39 @@ icons.forEach((element) => {
 // Aggiungere alla pagina una select in cui le options corrispondono ai vari tipi di icone (animal, vegetable, user). 
 //Quando l’utente seleziona un tipo dalla select, visualizzare solamente le icone corrispondenti.
 
-// 4. stampo in pagina select con options
+// 4. stampo in pagina l'input select con options di scelta type
 optionContainer.innerHTML += ` 
 <p>FILTRA PER TIPO
     <select id="options" name="options">
         <option value="all">All</option>
-        <option value="animals">Animals</option>
-        <option value="vegetables">Vegetables</option>
+        <option value="animal">Animal</option>
+        <option value="vegetable">Vegetable</option>
         <option value="user">User</option>
     </select>
 </p>`;
 
+// creo variabile per agganciare in dom il select che mi permette la scelta
+const select = document.getElementById('options');
 
-
-
-// 5. scateno evento on click -> change type on select id='options'
-
-
+// 5. scateno evento change on click -> change type on select id='options' -> all, animal, vegetable, user
 select.addEventListener('change', function() {
     
-    
-    console.log('You selected: ', select.value); // debug in console
-
-    // con filter, creo array per oggetti scelti dall'utente con eventListener on click
+    // con filter, filtro e creo array per icons type scelto dall'utente
     const newFilterTypeList = icons.filter(function (icon){
         const typeChoosen = icon.type;
-        return typeChoosen === select.value;
+        return typeChoosen === select.value || select.value === 'all'; // ritornami, in un nuovo array, il valore dell'icona scelta se è uguale al type || oppure ritornamelo se è incluso in 'all'
     })
 
-    console.log(newFilterTypeList);
+    
+
+    iconsContainer.innerHTML = '' // resetto
+    // stampo nel dom con forEach l'array di elementi scelto: all || animal || vegetable || user
+    newFilterTypeList.forEach((element) => {
+        iconsContainer.innerHTML += ` 
+         <div class="icons">
+             <i class= "${element.family} ${element.prefix}${element.name} ${element.color}"> </i>
+             <div>${element.name.toUpperCase()}</div>
+         </div>`;
+    })
+     
 });
-
-
-
-// const list = ['Mino', 'Pino', 'Gino', 'Maura', 'Lino', 'Anna', 'Paola']; ICONS
-// const newFilterNamesList = list.filter(function (name) {
-//     const firstChar = name[0].toLowerCase();
-//     // ritorna il valore solo se...
-//     return firstChar === 'm' || firstChar === 'p';
-// })
-// console.log(newFilterNamesList)
-
- 
-
-
-
-
-
-// 1. event listener su select -> evento change
-// 2. dentro event listener stampa valore scelto da select
-// 3. filtri tutti le icons, andando a vedere se il loro type è uguale al valore scelto tramite select
-// 4. stampo nel dom le icone prescelte filtrate
-// 5. gestire caso all
-
-
-
-
-
-// BONUS
-// 1- modificare la struttura dati fornita e valorizzare la proprietà “color” in modo dinamico: generare in modo casuale un codice colore, 
-// sapendo che la notazione esadecimale è formata dal simbolo “#” seguito da 6 caratteri alfanumerici compresi tra 0 e 9 e A e F.
-// 2- popolare le options della select della milestone 3 dinamicamente.
